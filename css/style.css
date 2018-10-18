@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Headland+One');
+
+body {
+    background: #101921;
+    font-family: 'Headland One', serif;
+}
+
+.logo {
+    position: absolute;
+    width: 99px;
+    height: 23px;
+    left: 62px;
+    top: 74px;
+}
