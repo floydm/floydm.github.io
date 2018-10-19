@@ -2,13 +2,10 @@
 
 body {
     background: #101921;
-    font-family: 'Headland One', serif;
 }
 
 .logo {
     position: absolute;
-    width: 170px;
-    height: 18px;
     left: 50px;
     top: 50px;
 }
