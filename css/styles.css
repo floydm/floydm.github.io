@@ -1,14 +1,4 @@
-@font-face {
-    font-family: "Press Start 2P";
-    font-style: normal;
-    font-weight: 400;
-    /* Retaining your local font file path mapping */
-    src: url("../fonts/PressStart2P-Regular.ttf");
-    font-display: swap;
-}
-
-html,
-body {
+html, body {
     height: 100%;
     margin: 0;
     padding: 0;
@@ -19,13 +9,8 @@ body {
     font-size: 16px;
     font-weight: bold;
     color: #ffffff;
-    /* High-contrast gradient to create the vignetted screen shape */
-    background: radial-gradient(
-        circle at center,
-        #0a1b29 0%,
-        #030a10 75%,
-        #010406 100%
-    );
+    /* High-contrast gradient creating the original vignetted screen atmosphere */
+    background: radial-gradient(circle at center, #0a1b29 0%, #030a10 75%, #010406 100%);
     overflow: hidden;
     position: relative;
 }
@@ -35,22 +20,11 @@ body::before {
     content: " ";
     display: block;
     position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background:
-        linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.35) 50%),
-        linear-gradient(
-            90deg,
-            rgba(255, 0, 0, 0.04),
-            rgba(0, 255, 0, 0.01),
-            rgba(0, 0, 255, 0.04)
-        );
+    top: 0; left: 0; bottom: 0; right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.35) 50%),
+    linear-gradient(90deg, rgba(255, 0, 0, 0.04), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.04));
     z-index: 10;
-    background-size:
-        100% 4px,
-        6px 100%;
+    background-size: 100% 4px, 6px 100%;
     pointer-events: none;
 }
 
@@ -59,15 +33,8 @@ body::after {
     content: " ";
     display: block;
     position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background: linear-gradient(
-        rgba(18, 16, 16, 0) 0%,
-        rgba(255, 255, 255, 0.02) 10%,
-        rgba(18, 16, 16, 0) 12%
-    );
+    top: 0; left: 0; bottom: 0; right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 0%, rgba(255, 255, 255, 0.02) 10%, rgba(18, 16, 16, 0) 12%);
     z-index: 11;
     background-size: 100% 100%;
     animation: monitor-scroll 8s linear infinite;
@@ -75,33 +42,23 @@ body::after {
 }
 
 @keyframes monitor-scroll {
-    0% {
-        background-position: 0 -100vh;
-    }
-    100% {
-        background-position: 0 100vh;
-    }
+    0% { background-position: 0 -100vh; }
+    100% { background-position: 0 100vh; }
 }
 
-/* Unvisited link */
+/* Link treatments */
 a:link {
-    color: #fff;
+    color: #FFF;
     text-decoration: none;
 }
-
-/* Visited link */
 a:visited {
-    color: #fff;
+    color: #FFF;
     text-decoration: none;
 }
-
-/* Mouse over link */
 a:hover {
-    color: #ff00f0;
+    color: #FF00F0;
     text-decoration: none;
 }
-
-/* Selected link */
 a:active {
     color: #4242e6;
     text-decoration: none;
@@ -122,7 +79,14 @@ h1 {
     font-size: 4em;
     margin: 0;
     font-weight: bold;
-    letter-spacing: -1px;
+    letter-spacing: -2px; /* Uniform tightening for high-end look */
+    cursor: default;
+}
+
+/* --- TARGETED KERNING TO ADJUST BREAK ON THE 'F' --- */
+.kern-f {
+    display: inline-block;
+    margin-right: -0.12em; /* Pulls the 'L' closer to visually balance the layout */
 }
 
 /* Concept Matched Atmospheric Subtitle */
@@ -132,26 +96,37 @@ h1 {
     margin-top: 30px;
     color: #557085; /* Deeper ice blue */
     opacity: 0.9;
-    /* Ambient blue neon glow from the concept image */
-    text-shadow:
-        0 0 8px rgba(0, 216, 255, 0.4),
-        0 0 20px rgba(0, 216, 255, 0.1);
+    text-shadow: 0 0 8px rgba(0, 216, 255, 0.4), 0 0 20px rgba(0, 216, 255, 0.1);
     text-transform: uppercase;
+    display: inline-block;
+}
+
+/* --- RETRO BLOCK CURSOR EFFECT --- */
+.subtitle::after {
+    content: "█"; /* Solid terminal prompt glyph block */
+    margin-left: 8px;
+    color: #ff0033; /* Pure High-Contrast Hot Red */
+    font-size: 0.95rem;
+    vertical-align: middle;
+    text-shadow: 0 0 8px #ff0033, 0 0 16px rgba(255, 0, 51, 0.6);
+    animation: cursor-blink 1.2s step-start infinite;
+}
+
+@keyframes cursor-blink {
+    50% { opacity: 0; }
 }
 
 /* --- THE GLITCH METHOD --- */
 .glitch {
     position: relative;
-    margin: 0 auto;
     display: inline-block;
 }
 
 /* Layered values provide the ambient white neon bloom effect */
 .glitch-text {
-    text-shadow:
-        0 0 4px rgba(255, 255, 255, 0.6),
-        0 0 10px rgba(255, 255, 255, 0.3),
-        0 0 20px rgba(0, 243, 255, 0.2);
+    text-shadow: 0 0 4px rgba(255, 255, 255, 0.6),
+    0 0 10px rgba(255, 255, 255, 0.3),
+    0 0 20px rgba(0, 243, 255, 0.2);
 }
 
 .glitch::before,
@@ -166,90 +141,75 @@ h1 {
     overflow: hidden;
 }
 
-/* Tokyo Concept Hot Magenta */
+/* Pure Concept Hot Magenta */
 .glitch::after {
     animation: glitch-animation 3s infinite linear alternate-reverse;
     left: 4px;
-    text-shadow:
-        -3px 0 #ff0055,
-        0 0 10px rgba(255, 0, 85, 0.5);
+    text-shadow: -3px 0 #ff0055, 0 0 10px rgba(255, 0, 85, 0.5);
 }
 
-/* Tokyo Concept Electric Cyan */
+/* Pure Concept Electric Cyan */
 .glitch::before {
     animation: glitch-animation-2 3s infinite linear alternate-reverse;
     left: -4px;
-    text-shadow:
-        3px 0 #00f3ff,
-        0 0 10px rgba(0, 243, 255, 0.5);
+    text-shadow: 3px 0 #00f3ff, 0 0 10px rgba(0, 243, 255, 0.5);
+}
+
+/* Overdrive the glitch animation frequency on hover */
+.glitch:hover::after {
+    animation: glitch-animation 1s infinite linear alternate-reverse;
+}
+.glitch:hover::before {
+    animation: glitch-animation-2 1s infinite linear alternate-reverse;
 }
 
 /* Glitch Slice Insets */
 @keyframes glitch-animation {
-    0% {
-        clip-path: inset(40% 0 61% 0);
-    }
-    10% {
-        clip-path: inset(92% 0 1% 0);
-    }
-    20% {
-        clip-path: inset(15% 0 80% 0);
-    }
-    30% {
-        clip-path: inset(80% 0 5% 0);
-    }
-    40% {
-        clip-path: inset(3% 0 92% 0);
-    }
-    50% {
-        clip-path: inset(60% 0 20% 0);
-    }
-    60% {
-        clip-path: inset(25% 0 58% 0);
-    }
-    70% {
-        clip-path: inset(14% 0 55% 0);
-    }
-    80% {
-        clip-path: inset(64% 0 28% 0);
-    }
-    90% {
-        clip-path: inset(10% 0 85% 0);
-    }
-    100% {
-        clip-path: inset(88% 0 1% 0);
-    }
+    0%   { clip-path: inset(40% 0 61% 0); }
+    10%  { clip-path: inset(92% 0 1% 0); }
+    20%  { clip-path: inset(15% 0 80% 0); }
+    30%  { clip-path: inset(80% 0 5% 0); }
+    40%  { clip-path: inset(3% 0 92% 0); }
+    50%  { clip-path: inset(60% 0 20% 0); }
+    60%  { clip-path: inset(25% 0 58% 0); }
+    70%  { clip-path: inset(14% 0 55% 0); }
+    80%  { clip-path: inset(64% 0 28% 0); }
+    90%  { clip-path: inset(10% 0 85% 0); }
+    100% { clip-path: inset(88% 0 1% 0); }
 }
 
 @keyframes glitch-animation-2 {
-    0% {
-        clip-path: inset(25% 0 58% 0);
+    0%   { clip-path: inset(25% 0 58% 0); }
+    12%  { clip-path: inset(14% 0 55% 0); }
+    24%  { clip-path: inset(64% 0 28% 0); }
+    36%  { clip-path: inset(5% 0 82% 0); }
+    48%  { clip-path: inset(88% 0 1% 0); }
+    60%  { clip-path: inset(10% 0 85% 0); }
+    72%  { clip-path: inset(40% 0 61% 0); }
+    84%  { clip-path: inset(92% 0 1% 0); }
+    96%  { clip-path: inset(15% 0 80% 0); }
+    100% { clip-path: inset(80% 0 5% 0); }
+}
+
+/* --- MOBILE RESPONSIVE MEDIA BREAKPOINTS --- */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.2em;
+        letter-spacing: -1px;
     }
-    12% {
-        clip-path: inset(14% 0 55% 0);
+    .subtitle {
+        font-size: 0.8rem;
+        letter-spacing: 2px;
+        margin-top: 20px;
     }
-    24% {
-        clip-path: inset(64% 0 28% 0);
+    .subtitle::after {
+        font-size: 0.7rem;
+        margin-left: 5px;
     }
-    36% {
-        clip-path: inset(5% 0 82% 0);
-    }
-    48% {
-        clip-path: inset(88% 0 1% 0);
-    }
-    60% {
-        clip-path: inset(10% 0 85% 0);
-    }
-    72% {
-        clip-path: inset(40% 0 61% 0);
-    }
-    84% {
-        clip-path: inset(92% 0 1% 0);
-    }
-    96% {
-        clip-path: inset(15% 0 80% 0);
-    }
-    100% {
-        clip-path: inset(80% 0 5% 0);
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.6em;
     }
 }
