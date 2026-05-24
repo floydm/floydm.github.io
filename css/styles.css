@@ -1,15 +1,13 @@
 /* --- SELF-HOSTED TTF FONT DECLARATION --- */
 @font-face {
-    font-family: "Press Start 2P";
+    font-family: 'Press Start 2P';
     font-style: normal;
     font-weight: 400;
-    font-display: swap; /* Keeps content visible while the font asset loads */
-    /* Steps up one level out of the css folder, then targets the fonts directory */
-    src: url("../fonts/press-start-2p.ttf") format("truetype");
+    font-display: swap;
+    src: url('../fonts/press-start-2p.ttf') format('truetype');
 }
 
-html,
-body {
+html, body {
     height: 100%;
     margin: 0;
     padding: 0;
@@ -19,14 +17,10 @@ body {
     font-family: "Press Start 2P", cursive;
     font-size: 16px;
     font-weight: bold;
-    color: #ffffff;
-    /* High-contrast gradient creating the original vignetted screen atmosphere */
-    background: radial-gradient(
-        circle at center,
-        #0a1b29 0%,
-        #030a10 75%,
-        #010406 100%
-    );
+    color: #fbf1c7; /* GRUVBOX: Brightest cream text base */
+
+    /* HIGH CONTRAST: Deep Charcoal Hard center and pure black vignette edges */
+    background: radial-gradient(circle at center, #111213 0%, #070708 70%, #000000 100%);
     overflow: hidden;
     position: relative;
 }
@@ -36,22 +30,11 @@ body::before {
     content: " ";
     display: block;
     position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background:
-        linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.35) 50%),
-        linear-gradient(
-            90deg,
-            rgba(255, 0, 0, 0.04),
-            rgba(0, 255, 0, 0.01),
-            rgba(0, 0, 255, 0.04)
-        );
+    top: 0; left: 0; bottom: 0; right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.35) 50%),
+    linear-gradient(90deg, rgba(251, 73, 52, 0.03), rgba(184, 187, 38, 0.01), rgba(69, 133, 136, 0.03));
     z-index: 10;
-    background-size:
-        100% 4px,
-        6px 100%;
+    background-size: 100% 4px, 6px 100%;
     pointer-events: none;
 }
 
@@ -60,41 +43,29 @@ body::after {
     content: " ";
     display: block;
     position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background: linear-gradient(
-        rgba(18, 16, 16, 0) 0%,
-        rgba(255, 255, 255, 0.02) 10%,
-        rgba(18, 16, 16, 0) 12%
-    );
+    top: 0; left: 0; bottom: 0; right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 0%, rgba(255, 255, 255, 0.02) 10%, rgba(18, 16, 16, 0) 12%);
     z-index: 11;
     background-size: 100% 100%;
-    animation: monitor-scroll 8s linear infinite;
+    animation: monitor-scroll 10s linear infinite;
     pointer-events: none;
 }
 
 @keyframes monitor-scroll {
-    0% {
-        background-position: 0 -100vh;
-    }
-    100% {
-        background-position: 0 100vh;
-    }
+    0% { background-position: 0 -100vh; }
+    100% { background-position: 0 100vh; }
 }
 
 /* Link treatments */
-a:link,
-a:visited {
-    color: #fff;
+a:link, a:visited {
+    color: #fbf1c7;
     text-decoration: none;
 }
 a:hover {
-    color: #ff00f0;
+    color: #fe8019; /* Gruvbox Orange */
 }
 a:active {
-    color: #4242e6;
+    color: #b8bb26; /* Gruvbox Green */
 }
 
 .center {
@@ -112,47 +83,41 @@ h1 {
     font-size: 4em;
     margin: 0;
     font-weight: bold;
-    letter-spacing: -2px; /* Uniform tightening for a high-end look */
+    letter-spacing: -2px;
     cursor: default;
 }
 
 /* --- TARGETED KERNING TO ADJUST BREAK ON THE 'F' --- */
 .kern-f {
     display: inline-block;
-    margin-right: -0.12em; /* Pulls the 'L' closer to visually balance the layout */
+    margin-right: -0.12em;
 }
 
 /* Concept Matched Atmospheric Subtitle */
 .subtitle {
     font-size: 1.1rem;
     letter-spacing: 3px;
-    margin-top: 30px;
-    color: #557085; /* Deeper ice blue */
-    opacity: 0.9;
-    text-shadow:
-        0 0 8px rgba(0, 216, 255, 0.4),
-        0 0 20px rgba(0, 216, 255, 0.1);
+    margin-top: 14px; /* BALANCED: Shifted up from 30px to perfectly balance the layout */
+    color: #a89984; /* GRUVBOX: Foreground gray */
+    opacity: 0.95;
+    text-shadow: 0 0 8px rgba(251, 241, 199, 0.4), 0 0 20px rgba(251, 241, 199, 0.15);
     text-transform: uppercase;
     display: inline-block;
 }
 
 /* --- RETRO BLOCK CURSOR EFFECT --- */
 .subtitle::after {
-    content: "█"; /* Solid terminal prompt glyph block */
+    content: "█";
     margin-left: 8px;
-    color: #ff0033; /* Pure High-Contrast Hot Red */
+    color: #fe8019; /* GRUVBOX: Retro Orange Accent */
     font-size: 0.95rem;
     vertical-align: middle;
-    text-shadow:
-        0 0 8px #ff0033,
-        0 0 16px rgba(255, 0, 51, 0.6);
+    text-shadow: 0 0 10px #fe8019, 0 0 25px #fe8019, 0 0 40px rgba(254, 128, 25, 0.4);
     animation: cursor-blink 1.2s step-start infinite;
 }
 
 @keyframes cursor-blink {
-    50% {
-        opacity: 0;
-    }
+    50% { opacity: 0; }
 }
 
 /* --- THE GLITCH METHOD --- */
@@ -161,12 +126,11 @@ h1 {
     display: inline-block;
 }
 
-/* Layered values provide the ambient white neon bloom effect */
+/* Brightened ambient bloom behind the main cream text */
 .glitch-text {
-    text-shadow:
-        0 0 4px rgba(255, 255, 255, 0.6),
-        0 0 10px rgba(255, 255, 255, 0.3),
-        0 0 20px rgba(0, 243, 255, 0.2);
+    text-shadow: 0 0 6px rgba(251, 241, 199, 0.7),
+    0 0 15px rgba(251, 241, 199, 0.4),
+    0 0 30px rgba(251, 241, 199, 0.1);
 }
 
 .glitch::before,
@@ -177,26 +141,22 @@ h1 {
     left: 0;
     width: 100%;
     height: 100%;
-    background: #040d14; /* Deepened mask to simulate precise slice shadows */
+    background: #111213; /* Absolute dark center color override */
     overflow: hidden;
 }
 
-/* Pure Concept Hot Magenta */
+/* GRUVBOX: Rich Desert Red Slice Layer */
 .glitch::after {
     animation: glitch-animation 3s infinite linear alternate-reverse;
     left: 4px;
-    text-shadow:
-        -3px 0 #ff0055,
-        0 0 10px rgba(255, 0, 85, 0.5);
+    text-shadow: -3px 0 #fb4934, 0 0 14px rgba(251, 73, 52, 0.6);
 }
 
-/* Pure Concept Electric Cyan */
+/* GRUVBOX: Bright Golden Yellow Slice Layer */
 .glitch::before {
     animation: glitch-animation-2 3s infinite linear alternate-reverse;
     left: -4px;
-    text-shadow:
-        3px 0 #00f3ff,
-        0 0 10px rgba(0, 243, 255, 0.5);
+    text-shadow: 3px 0 #fabd2f, 0 0 14px rgba(250, 189, 47, 0.6);
 }
 
 /* Overdrive the glitch animation frequency on hover */
@@ -209,72 +169,30 @@ h1 {
 
 /* Glitch Slice Insets */
 @keyframes glitch-animation {
-    0% {
-        clip-path: inset(40% 0 61% 0);
-    }
-    10% {
-        clip-path: inset(92% 0 1% 0);
-    }
-    20% {
-        clip-path: inset(15% 0 80% 0);
-    }
-    30% {
-        clip-path: inset(80% 0 5% 0);
-    }
-    40% {
-        clip-path: inset(3% 0 92% 0);
-    }
-    50% {
-        clip-path: inset(60% 0 20% 0);
-    }
-    60% {
-        clip-path: inset(25% 0 58% 0);
-    }
-    70% {
-        clip-path: inset(14% 0 55% 0);
-    }
-    80% {
-        clip-path: inset(64% 0 28% 0);
-    }
-    90% {
-        clip-path: inset(10% 0 85% 0);
-    }
-    100% {
-        clip-path: inset(88% 0 1% 0);
-    }
+    0%   { clip-path: inset(40% 0 61% 0); }
+    10%  { clip-path: inset(92% 0 1% 0); }
+    20%  { clip-path: inset(15% 0 80% 0); }
+    30%  { clip-path: inset(80% 0 5% 0); }
+    40%  { clip-path: inset(3% 0 92% 0); }
+    50%  { clip-path: inset(60% 0 20% 0); }
+    60%  { clip-path: inset(25% 0 58% 0); }
+    70%  { clip-path: inset(14% 0 55% 0); }
+    80%  { clip-path: inset(64% 0 28% 0); }
+    90%  { clip-path: inset(10% 0 85% 0); }
+    100% { clip-path: inset(88% 0 1% 0); }
 }
 
 @keyframes glitch-animation-2 {
-    0% {
-        clip-path: inset(25% 0 58% 0);
-    }
-    12% {
-        clip-path: inset(14% 0 55% 0);
-    }
-    24% {
-        clip-path: inset(64% 0 28% 0);
-    }
-    36% {
-        clip-path: inset(5% 0 82% 0);
-    }
-    48% {
-        clip-path: inset(88% 0 1% 0);
-    }
-    60% {
-        clip-path: inset(10% 0 85% 0);
-    }
-    72% {
-        clip-path: inset(40% 0 61% 0);
-    }
-    84% {
-        clip-path: inset(92% 0 1% 0);
-    }
-    96% {
-        clip-path: inset(15% 0 80% 0);
-    }
-    100% {
-        clip-path: inset(80% 0 5% 0);
-    }
+    0%   { clip-path: inset(25% 0 58% 0); }
+    12%  { clip-path: inset(14% 0 55% 0); }
+    24%  { clip-path: inset(64% 0 28% 0); }
+    36%  { clip-path: inset(5% 0 82% 0); }
+    48%  { clip-path: inset(88% 0 1% 0); }
+    60%  { clip-path: inset(10% 0 85% 0); }
+    72%  { clip-path: inset(40% 0 61% 0); }
+    84%  { clip-path: inset(92% 0 1% 0); }
+    96%  { clip-path: inset(15% 0 80% 0); }
+    100% { clip-path: inset(80% 0 5% 0); }
 }
 
 /* --- MOBILE RESPONSIVE MEDIA BREAKPOINTS --- */
@@ -286,7 +204,7 @@ h1 {
     .subtitle {
         font-size: 0.8rem;
         letter-spacing: 2px;
-        margin-top: 20px;
+        margin-top: 10px; /* Snugs up nicely on mobile screens */
     }
     .subtitle::after {
         font-size: 0.7rem;
