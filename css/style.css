@@ -1,11 +1,240 @@
-@import url('https://fonts.googleapis.com/css?family=Headland+One');
-
+html,
 body {
-    background: #101921;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
-.logo {
+body {
+    font-family: "Press Start 2P", cursive;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    /* High-contrast gradient to create the vignetted screen shape */
+    background: radial-gradient(
+        circle at center,
+        #0a1b29 0%,
+        #030a10 75%,
+        #010406 100%
+    );
+    overflow: hidden;
+    position: relative;
+}
+
+/* --- VINTAGE CRT OVERLAY SCREEN GRID --- */
+body::before {
+    content: " ";
+    display: block;
     position: absolute;
-    left: 50px;
-    top: 50px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background:
+        linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.35) 50%),
+        linear-gradient(
+            90deg,
+            rgba(255, 0, 0, 0.04),
+            rgba(0, 255, 0, 0.01),
+            rgba(0, 0, 255, 0.04)
+        );
+    z-index: 10;
+    background-size:
+        100% 4px,
+        6px 100%;
+    pointer-events: none;
+}
+
+/* Rolling subtle scan line artifact */
+body::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(
+        rgba(18, 16, 16, 0) 0%,
+        rgba(255, 255, 255, 0.02) 10%,
+        rgba(18, 16, 16, 0) 12%
+    );
+    z-index: 11;
+    background-size: 100% 100%;
+    animation: monitor-scroll 8s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes monitor-scroll {
+    0% {
+        background-position: 0 -100vh;
+    }
+    100% {
+        background-position: 0 100vh;
+    }
+}
+
+/* Link treatments (kept from original code) */
+a:link {
+    color: #fff;
+    text-decoration: none;
+}
+a:visited {
+    color: #fff;
+    text-decoration: none;
+}
+a:hover {
+    color: #ff00f0;
+    text-decoration: none;
+}
+a:active {
+    color: #4242e6;
+    text-decoration: none;
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+/* --- HEADING STYLES --- */
+h1 {
+    display: block;
+    font-size: 4em;
+    margin: 0;
+    font-weight: bold;
+    letter-spacing: -1px;
+}
+
+/* Concept Matched Atmospheric Subtitle */
+.subtitle {
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    margin-top: 30px;
+    color: #557085;
+    opacity: 0.9;
+    /* Ambient blue neon glow from the concept image */
+    text-shadow:
+        0 0 8px rgba(0, 216, 255, 0.4),
+        0 0 20px rgba(0, 216, 255, 0.1);
+    text-transform: uppercase;
+}
+
+/* --- THE GLITCH METHOD --- */
+.glitch {
+    position: relative;
+    margin: 0 auto;
+    display: inline-block;
+}
+
+/* Layered values provide the ambient white neon bloom effect */
+.glitch-text {
+    text-shadow:
+        0 0 4px rgba(255, 255, 255, 0.6),
+        0 0 10px rgba(255, 255, 255, 0.3),
+        0 0 20px rgba(0, 243, 255, 0.2);
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #040d14; /* Deepened mask to simulate precise slice shadows */
+    overflow: hidden;
+}
+
+/* Tokyo Concept Hot Magenta */
+.glitch::after {
+    animation: glitch-animation 3s infinite linear alternate-reverse;
+    left: 4px;
+    text-shadow:
+        -3px 0 #ff0055,
+        0 0 10px rgba(255, 0, 85, 0.5);
+}
+
+/* Tokyo Concept Electric Cyan */
+.glitch::before {
+    animation: glitch-animation-2 3s infinite linear alternate-reverse;
+    left: -4px;
+    text-shadow:
+        3px 0 #00f3ff,
+        0 0 10px rgba(0, 243, 255, 0.5);
+}
+
+/* Glitch Slice Insets */
+@keyframes glitch-animation {
+    0% {
+        clip-path: inset(40% 0 61% 0);
+    }
+    10% {
+        clip-path: inset(92% 0 1% 0);
+    }
+    20% {
+        clip-path: inset(15% 0 80% 0);
+    }
+    30% {
+        clip-path: inset(80% 0 5% 0);
+    }
+    40% {
+        clip-path: inset(3% 0 92% 0);
+    }
+    50% {
+        clip-path: inset(60% 0 20% 0);
+    }
+    60% {
+        clip-path: inset(25% 0 58% 0);
+    }
+    70% {
+        clip-path: inset(14% 0 55% 0);
+    }
+    80% {
+        clip-path: inset(64% 0 28% 0);
+    }
+    90% {
+        clip-path: inset(10% 0 85% 0);
+    }
+    100% {
+        clip-path: inset(88% 0 1% 0);
+    }
+}
+
+@keyframes glitch-animation-2 {
+    0% {
+        clip-path: inset(25% 0 58% 0);
+    }
+    12% {
+        clip-path: inset(14% 0 55% 0);
+    }
+    24% {
+        clip-path: inset(64% 0 28% 0);
+    }
+    36% {
+        clip-path: inset(5% 0 82% 0);
+    }
+    48% {
+        clip-path: inset(88% 0 1% 0);
+    }
+    60% {
+        clip-path: inset(10% 0 85% 0);
+    }
+    72% {
+        clip-path: inset(40% 0 61% 0);
+    }
+    84% {
+        clip-path: inset(92% 0 1% 0);
+    }
+    96% {
+        clip-path: inset(15% 0 80% 0);
+    }
+    100% {
+        clip-path: inset(80% 0 5% 0);
+    }
 }
