@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>404 // NOT FOUND</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+
+        <link rel="stylesheet" href="css/styles.css" />
+
+        <style>
+            .minimal-panic-screen {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                min-height: 80vh; /* Centers the component vertically in the terminal container */
+                text-align: center;
+            }
+            .err-code {
+                font-family: "Press Start 2P", cursive;
+                font-size: 6rem;
+                color: #fbf1c7; /* Replaced red with the primary Gruvbox cream */
+                margin: 0;
+                line-height: 1;
+            }
+            .err-msg {
+                font-family: "Press Start 2P", cursive;
+                font-size: 0.8rem;
+                color: #a89984; /* Balanced muted gray */
+                margin-top: 25px;
+                margin-bottom: 40px;
+                letter-spacing: 2px;
+            }
+            .err-return-link {
+                font-family: "JetBrains Mono", monospace;
+                font-size: 0.9rem;
+                color: #fbf1c7;
+                text-decoration: none;
+                padding: 10px 20px;
+                border: 1px dashed #3c3836;
+                border-radius: 4px;
+                background: #1d2021;
+                transition: all 0.2s ease;
+            }
+            .err-return-link:hover {
+                color: #b8bb26 !important; /* Gruvbox Green validation indicator on hover */
+                border-color: #b8bb26;
+                box-shadow: 0 0 15px rgba(184, 187, 38, 0.15);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="os-container">
+            <main class="minimal-panic-screen">
+                <h1 class="err-code">
+                    <span class="glitch glitch-text" data-text="404">404</span>
+                </h1>
+
+                <div class="err-msg">RESOURCE_NOT_INITIALIZED</div>
+
+                <a href="index.html" class="err-return-link"> &gt; cd ~/ </a>
+            </main>
+        </div>
+    </body>
+</html>
